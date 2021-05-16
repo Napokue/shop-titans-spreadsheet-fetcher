@@ -2,6 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+		<PackageId>ShopTitansSpreadsheetFetcher.SheetModels</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Napokue</Authors>
     </PropertyGroup>
 
     <ItemGroup>
