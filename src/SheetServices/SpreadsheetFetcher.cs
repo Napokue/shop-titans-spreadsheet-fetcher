@@ -19,10 +19,11 @@ namespace SheetServices
             _sheetsService = sheetsService;
         }
 
-        public IEnumerable<SheetModels.Blueprints.Blueprint> FetchBluePrints()
+        public IEnumerable<SheetModels.Blueprints.Blueprint> FetchBluePrints(
+            BlueprintsFetchFlags fetchFlags = BlueprintsFetchFlags.All)
         {
             var blueprintsFetcher =
-                new BlueprintsFetcher(_sheetsService, BlueprintsFetchFlags.All);
+                new BlueprintsFetcher(_sheetsService, fetchFlags);
             return blueprintsFetcher.FetchBlueprints();
         }
     }
