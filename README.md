@@ -1,3 +1,5 @@
+# Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Shop-titans-spreadsheet-fetcher](#shop-titans-spreadsheet-fetcher)
 - [Usage](#usage)
 - [Packages](#packages)
