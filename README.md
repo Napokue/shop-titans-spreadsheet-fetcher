@@ -23,7 +23,12 @@ var credentialFile = new FileInfo("path-to-credential-json");
 var googleSheetsService = new GoogleSheetsService(credentialFile);            
 var spreadsheetFetcher = new SpreadsheetFetcher(googleSheetsService);
 
+// By default all data from the blue prints will be fetched.
 var bluePrints = spreadsheetFetcher.FetchBluePrints().ToList();
+
+// It is also possible to add a filter to the fetch, the main filter "Item" will always be fetched.
+var fetchedBluePrints = spreadsheetFetcher.FetchBluePrints(BlueprintsFetchFlags.Components).ToList();
+
 
 // Can be exported to JSON
 var bluePrintsToJson = bluePrints.Select(blueprint => blueprint.ToJson()).ToList();
