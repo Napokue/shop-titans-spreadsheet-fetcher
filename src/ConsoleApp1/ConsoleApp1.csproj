@@ -7,7 +7,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SheetServices\SheetServices.csproj" />
-      <ProjectReference Include="..\src\SheetServices\SheetServices.csproj" />
     </ItemGroup>
 
 </Project>
