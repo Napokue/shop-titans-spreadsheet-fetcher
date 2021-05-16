@@ -18,7 +18,7 @@ namespace SheetServices.Blueprints
 
             if (!flags.HasFlag(BlueprintsFetchFlags.Item))
             {
-                throw new ArgumentException($"{nameof(flags)} needs to have flag: {BlueprintsFetchFlags.Item}");
+                flags |= BlueprintsFetchFlags.Item;
             }
             _flags = flags;
         }
