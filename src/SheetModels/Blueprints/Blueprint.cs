@@ -1,4 +1,6 @@
-﻿namespace SheetModels.Blueprints
+﻿using Newtonsoft.Json;
+
+namespace SheetModels.Blueprints
 {
     public sealed class Blueprint
     {
@@ -10,5 +12,15 @@
         public CraftingUpgrades CraftingUpgrades { get; init; }
         public AscensionUpgrades AscensionUpgrades { get; init; }
         public Energy Energy { get; init; }
+
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static Blueprint FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<Blueprint>(json);
+        }
     }
 }
