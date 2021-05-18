@@ -5,25 +5,23 @@ using SheetModels.Blueprints;
 
 namespace SheetServices.Blueprints
 {
-    internal class BlueprintsFetcher
+    internal class BlueprintsFetcher : AbstractFetcher<Blueprint>
     {
-        private readonly GoogleSheetsService _sheetsService;
         private readonly BlueprintsFetchFlags _flags;
 
         public BlueprintsFetcher(
             GoogleSheetsService sheetsService,
-            BlueprintsFetchFlags flags = BlueprintsFetchFlags.Item)
+            BlueprintsFetchFlags flags = BlueprintsFetchFlags.Item) : base(sheetsService)
         {
-            _sheetsService = sheetsService;
-
             if (!flags.HasFlag(BlueprintsFetchFlags.Item))
             {
                 flags |= BlueprintsFetchFlags.Item;
             }
+            
             _flags = flags;
         }
 
-        public IEnumerable<Blueprint> FetchBlueprints()
+        public override IEnumerable<Blueprint> FetchModels()
         {
             var items = FetchItem().ToList();
             IList<Worker> workers = Array.Empty<Worker>();
@@ -103,17 +101,5 @@ namespace SheetServices.Blueprints
             Fetch(SheetRanges.BlueprintsRanges.AscensionUpgradesRange, AscensionUpgrades.FromRaw);
         
         private IEnumerable<Energy> FetchEnergy() => Fetch(SheetRanges.BlueprintsRanges.EnergyRange, Energy.FromRaw);
-        
-        private IEnumerable<T> Fetch<T>(string range, Func<IList<object>, T> fromRaw)
-        {
-            var rawCollection = _sheetsService.FetchValueRange(range);
-            
-            // Skip first element, as the first element of rows are the headers
-            for (var i = 1; i < rawCollection.Count; i++)
-            {
-                var raw = rawCollection[i];
-                yield return fromRaw(raw);
-            }
-        }
     }
 }

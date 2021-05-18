@@ -26,7 +26,8 @@ namespace SheetServices
 
         public IList<IList<object>> FetchValueRange(string range)
         {
-            var request = GetSheetsService().Spreadsheets.Values.Get(SpreadsheetId, range);
+            var sheetsService = GetSheetsService();
+            var request = sheetsService.Spreadsheets.Values.Get(SpreadsheetId, range);
             return request.Execute().Values;
         }
 
