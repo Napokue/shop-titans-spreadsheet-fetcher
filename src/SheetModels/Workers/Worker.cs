@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using SheetModels.Blueprints;
 
 namespace SheetModels.Workers
 {
@@ -14,6 +15,16 @@ namespace SheetModels.Workers
         public uint GemCost { get; init; }
         public string BlueprintUnlocks { get; init; }
 
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static Worker FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<Worker>(json);
+        }
+        
         public static Worker FromRaw(IList<object> raw)
         {
             return new()
