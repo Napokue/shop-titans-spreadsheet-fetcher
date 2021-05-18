@@ -1,18 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Services;
-using Google.Apis.Sheets.v4;
-using Google.Apis.Util.Store;
-using SheetModels.Blueprints;
 using SheetServices.Blueprints;
+using SheetServices.Workers;
 
 namespace SheetServices
 {
     public class SpreadsheetFetcher
     {
-        private GoogleSheetsService _sheetsService;
+        private readonly GoogleSheetsService _sheetsService;
 
         public SpreadsheetFetcher(GoogleSheetsService sheetsService)
         {
@@ -24,7 +18,14 @@ namespace SheetServices
         {
             var blueprintsFetcher =
                 new BlueprintsFetcher(_sheetsService, fetchFlags);
-            return blueprintsFetcher.FetchBlueprints();
+            return blueprintsFetcher.FetchModels();
+        }
+
+        public IEnumerable<SheetModels.Workers.Worker> FetchWorkers()
+        {
+            var workersFetcher =
+                new WorkersFetcher(_sheetsService);
+            return workersFetcher.FetchModels();
         }
     }
 }

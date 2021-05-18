@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Linq;
-using SheetModels.Blueprints;
 using SheetServices;
 using SheetServices.Blueprints;
 
@@ -14,6 +13,7 @@ namespace ConsoleApp1
             
             var spreadsheetFetcher = new SpreadsheetFetcher(googleSheetsService);
             var bluePrints = spreadsheetFetcher.FetchBluePrints(BlueprintsFetchFlags.Components).ToList();
+            var workers = spreadsheetFetcher.FetchWorkers().ToList();
         }
     }
 }
