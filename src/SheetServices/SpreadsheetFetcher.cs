@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SheetServices.Blueprints;
+using SheetServices.WorkerLevels;
 using SheetServices.Workers;
 
 namespace SheetServices
@@ -26,6 +27,13 @@ namespace SheetServices
             var workersFetcher =
                 new WorkersFetcher(_sheetsService);
             return workersFetcher.FetchModels();
+        }
+
+        public IEnumerable<SheetModels.WorkerLevels.WorkerLevel> FetchWorkerLevels()
+        {
+            var workerLevelsFetcher =
+                new WorkerLevelsFetcher(_sheetsService);
+            return workerLevelsFetcher.FetchModels();
         }
     }
 }
