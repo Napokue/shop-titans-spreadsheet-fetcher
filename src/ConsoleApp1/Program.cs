@@ -14,6 +14,7 @@ namespace ConsoleApp1
             var spreadsheetFetcher = new SpreadsheetFetcher(googleSheetsService);
             var bluePrints = spreadsheetFetcher.FetchBluePrints(BlueprintsFetchFlags.Components).ToList();
             var workers = spreadsheetFetcher.FetchWorkers().ToList();
+            var workerLevel = spreadsheetFetcher.FetchWorkerLevels().ToList();
         }
     }
 }
