@@ -1,3 +1,6 @@
+# Archived:
+This repository is archived. Support for this program will be as is and will no longer be supported and updated. The program will stay working as long as the spreadsheet of Shop Titans does not change or if the API of Google Sheets does not change.
+
 # Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Shop-titans-spreadsheet-fetcher](#shop-titans-spreadsheet-fetcher)
